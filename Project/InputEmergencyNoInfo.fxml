@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project.Controller.EmergencyNoInfoController">
+   <children>
+      <Label fx:id="open" layoutX="145.0" layoutY="35.0" text="-מוקדן פניות לארועי חירום-">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Button fx:id="button" layoutX="263.0" layoutY="265.0" mnemonicParsing="false" onAction="#NewCallWithOnlyStreet" text="שליחה" textFill="#081e07">
+         <font>
+            <Font name="Berlin Sans FB" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="182.0" layoutY="179.0" text="באיזה רחוב המקרה מתרחש?">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="streetChoice" layoutX="222.0" layoutY="219.0" />  </children>
+</Pane>

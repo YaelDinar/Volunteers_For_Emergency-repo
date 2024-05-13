@@ -1,0 +1,183 @@
+CREATE SCHEMA IF NOT EXISTS Project;
+
+CREATE TABLE IF NOT EXISTS Ereas (
+	EreaID INT auto_increment Primary key,
+    EreaName VARCHAR(30));
+
+
+CREATE TABLE IF NOT EXISTS streets (
+    StreetID INT AUTO_INCREMENT primary key,
+    StreetName VARCHAR(30),
+    EreaID INT NOT NULL,
+    CONSTRAINT fk_Ereas_EreaID 
+        FOREIGN KEY (EreaID)
+        REFERENCES Ereas(EreaID)
+        ON DELETE RESTRICT
+        ON UPDATE RESTRICT
+);
+drop table Volunteers;
+CREATE TABLE IF NOT EXISTS Volunteers(
+	VolunteerID VARCHAR(30) primary key,
+    VolunteerName VARCHAR(40),
+    PhoneNumber VARCHAR(10),
+    StreetID INT ,
+    CONSTRAINT fk_streets_StreetID
+        FOREIGN KEY (StreetID)
+        REFERENCES Streets(StreetID)
+        ON DELETE RESTRICT
+        ON UPDATE RESTRICT,
+	Skill INT NOT NULL,
+    Availability int not null
+);
+CREATE USER 'project'@'localhost' IDENTIFIED BY '1970';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON Project.* TO 'project'@'localhost';
+
+
+CREATE TABLE IF NOT EXISTS emergencies(
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Priority INT NOT NULL,
+    VolunteerID VARCHAR(30) DEFAULT NULL,
+    CONSTRAINT fk_Emergencies_VolunteerID FOREIGN KEY (VolunteerID) REFERENCES Volunteers(VolunteerID) ON DELETE RESTRICT ON UPDATE RESTRICT,
+    StreetID INT NOT NULL,
+    CONSTRAINT fk_Emergencies_StreetID FOREIGN KEY (StreetID) REFERENCES streets(StreetID) ON DELETE RESTRICT ON UPDATE RESTRICT,
+    HouseNumber INT DEFAULT NULL
+);
+
+
+
+INSERT INTO streets (StreetName, EreaID) VALUES
+('השומר', 1),
+('המורד', 1),
+('המעורר', 1),
+('בורוכוב', 1),
+('יפה נוף', 1),
+('השניים', 1),
+('בן ציון ישראלי', 1),
+('אהרון גולדשטיין', 1),
+('דוד קלעי', 1),
+('אחדות העבודה', 1),
+('פטאי', 1),
+('לביא', 1),
+('גבולות', 1),
+('חניתה', 1),
+('קרן קיימת לישראל', 1),
+('קרית יוסף', 1),
+('סמטת צור', 1),
+('גורדון', 1),
+('בלוך', 1),
+('סירקין', 1),
+('הפועל הצעיר', 1),
+('רוטברג', 1),
+('פועלי הרכבת', 1),
+('יצחק', 1),
+('ערבי נחל', 1),
+('שינקין', 1),
+('כצנלסון', 1);
+
+
+INSERT INTO streets (StreetName, EreaID) VALUES
+('שמעון בן צבי', 2),
+('יצחק רבין', 2),
+('רחל', 2),
+('אפק', 2),
+('רביבים', 2),
+('צפרירים', 2),
+('ישראל שפירא', 2),
+('מצולות ים', 2),
+('גונן', 2),
+('כ"ג', 2),
+('מנורה', 2),
+('המאבק', 2),
+('הידיד', 2),
+('הנדיב', 2),
+('עמישב', 2),
+('ההסתדרות', 2),
+('משמר הירדן', 2),
+('שילוב', 2),
+('תפוצות ישראל', 2),
+('אידמית', 2),
+('כורזין', 2),
+('הרב הרצוג', 2),
+('טבנקין', 2),
+('קפלנסקי', 2),
+('אלישע רודין', 2),
+('שמואל יבנאלי', 2),
+('יוסף צבי', 2);
+
+INSERT INTO streets (StreetName, EreaID) VALUES
+('ז\'בוטינסקי', 3),
+('שינקין', 3),
+('המלבן', 3),
+('גוש עציון', 3),
+('ויצמן', 3),
+('ברדיצ\'בסקי', 3),
+('הכנסת', 3),
+('ארלוזורוב', 3),
+('המעיין', 3),
+('המפנה', 3),
+('רותם', 3),
+('נרקיס', 3),
+('צה"ל', 3),
+('שדרות אפיקים', 3),
+('פיינברג', 3),
+('כלנית', 3),
+('רקפת', 3),
+('שדה בוקר', 3),
+('גולומב', 3),
+('ריינס', 3),
+('הדגנים', 3),
+('הצנחנים', 3),
+('אריאל', 3),
+('אילת', 3),
+('המגדל', 3);
+
+select * from streets where StreetName='צה"ל';
+
+INSERT INTO streets (StreetName, EreaID) VALUES
+('המעלות', 4),
+('דרך בן גוריון', 4),
+('מעוז', 4),
+('בראשית', 4),
+('עמל', 4),
+('דן', 4),
+('כנרת', 4),
+('סמטת זבוטינסקי', 4),
+('המעגל', 4),
+('עין גדי', 4),
+('המרי', 4),
+('גבע', 4),
+('המבוא', 4),
+('הגורן', 4),
+('אסירי ציון', 4),
+('מעלה יעקב', 4),
+('ניצנה', 4),
+('הראל', 4);
+
+
+INSERT INTO streets (StreetName, EreaID) VALUES
+('עליית הנוער', 5),
+('אבני זיכרון', 5),
+('משגב עם', 5),
+('התע"ש', 5),
+('לכיש', 5),
+('הל"ה', 5),
+('דליה', 5),
+('הורדים', 5),
+('ערד', 5),
+('הפלמ"ח', 5),
+('טייבר', 5),
+('גנסין', 5),
+('הצנחנים', 5),
+('רמב"ם', 5),
+('הנגבה', 5),
+('דוד רמז', 5),
+('ההגנה', 5),
+('דרך השלום', 5),
+('חנה סנש', 5),
+('יד מרדכי', 5),
+('חביבה רייק', 5);
+
+
+
+
