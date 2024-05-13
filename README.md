@@ -2,7 +2,7 @@
 an app for finding the best volunteers group for a specific emergency according to skill, distance and availability using genetic algorithem.
 
 ### Files
-- Project - fxml fileS
+- Project - fxml files
 - Model - important models that are being used
 - Controllers - the controllers
 - Program - the client app
