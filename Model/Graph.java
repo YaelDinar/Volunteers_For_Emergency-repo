@@ -23,7 +23,7 @@ public class Graph {
             for (int j = 0; j < this.streetCount; j++) {
                 distanceMatrix[i][j] = Math.abs(i - j);
                 if (areaMap.get(i + 1).equals(areaMap.get(j + 1))) {
-                    distanceMatrix[i][j] += AREA_MATCH_BONUS;
+                    distanceMatrix[i][j] -= AREA_MATCH_BONUS;
                 }
             }
         }
